@@ -52,15 +52,7 @@ CREATE POLICY "Authenticated users can view all orders" ON orders
   TO authenticated
   USING (true);
 
--- 9. Optional: Enable RLS on auth.users if not already enabled
-ALTER TABLE auth.users ENABLE ROW LEVEL SECURITY;
-
--- 10. Grant access to authenticated users for auth tables
-CREATE POLICY "Users can view own profile" ON auth.users
-  FOR SELECT
-  USING (auth.uid() = id);
-
--- 11. Create a helper function to get current user email
+-- 9. Create a helper function to get current user email
 CREATE OR REPLACE FUNCTION get_current_user_email()
 RETURNS text AS $$
   SELECT COALESCE(
@@ -69,10 +61,10 @@ RETURNS text AS $$
   );
 $$ LANGUAGE sql STABLE;
 
--- 12. Create index for faster order lookups by user email
+-- 10. Create index for faster order lookups by user email
 CREATE INDEX IF NOT EXISTS idx_orders_user_email ON orders(user_email);
 
--- 13. Verify everything is set up correctly
+-- 11. Verify setup
 SELECT
   'orders table exists' as check_name,
   count(*) as result
@@ -84,7 +76,3 @@ SELECT
   count(*) as result
 FROM pg_policies
 WHERE tablename = 'orders';
-
--- 14. Test insert (optional - removes after testing)
--- INSERT INTO orders (user_email, items, total, status)
--- VALUES ('test@example.com', '[{"name":"Test Product","price":100,"qty":1}]', 100, 'pending');
