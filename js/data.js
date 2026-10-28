@@ -134,7 +134,7 @@ const PRODUCTS = [
 const HERO_SLIDES = [
   {
     id: 1,
-    title: 'ANUSHKA SEN X BONKERS',
+    title: 'ANUSHKA SEN X KAYA',
     subtitle: 'THE EXCLUSIVE COLLAB IS HERE',
     ctaText: 'SHOP COLLECTION',
     ctaLink: '#new-in',
@@ -144,7 +144,7 @@ const HERO_SLIDES = [
   {
     id: 2,
     title: 'CULTURE CORNER',
-    subtitle: 'INDIAN HERITAGE WITH A BONKERS TWIST',
+    subtitle: 'INDIAN HERITAGE WITH A KAYA TWIST',
     ctaText: 'DISCOVER DROP',
     ctaLink: '#bestsellers',
     bgImage: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=80',
