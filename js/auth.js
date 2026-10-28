@@ -1,4 +1,4 @@
-// Bonkers Corner — Authentication Script
+// Bonkers Corner — Authentication Script with Supabase Integration
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
@@ -60,27 +60,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Login form submission
-  loginForm?.addEventListener('submit', (e) => {
+  // Login form submission - Using Supabase
+  loginForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     const rememberMe = document.getElementById('rememberMe').checked;
 
-    // Simulate login
-    const userData = { email, name: email.split('@')[0], loggedIn: true };
-    localStorage.setItem('bonkers_user', JSON.stringify(userData));
+    // Call Supabase Auth
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
 
-    if (rememberMe) {
-      localStorage.setItem('bonkers_remember', 'true');
+    if (error) {
+      alert('Login Error: ' + error.message);
+      return;
     }
 
-    showSuccess('Welcome Back!', `You've successfully logged in as ${email}`);
+    // Save session locally
+    if (data.session) {
+      localStorage.setItem('bonkers_user', JSON.stringify({
+        email: data.user.email,
+        name: data.user.user_metadata?.full_name || 'User',
+        loggedIn: true
+      }));
+      if (rememberMe) {
+        localStorage.setItem('bonkers_remember', 'true');
+      }
+    }
+
+    showSuccess('Welcome Back!', `Successfully logged in as ${email}`);
   });
 
-  // Signup form submission
-  signupForm?.addEventListener('submit', (e) => {
+  // Signup form submission - Using Supabase
+  signupForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('signupName').value;
@@ -89,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirm = document.getElementById('signupConfirm').value;
     const agreeTerms = document.getElementById('agreeTerms').checked;
 
-    // Validation
+    // Validate passwords match
     if (password !== confirm) {
       alert('Passwords do not match!');
       return;
@@ -100,20 +115,49 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Call Supabase Auth for signup
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          full_name: name
+        }
+      }
+    });
+
+    if (error) {
+      alert('Signup Error: ' + error.message);
+      return;
+    }
+
     // Save user data
-    const userData = { email, name, loggedIn: true };
-    localStorage.setItem('bonkers_user', JSON.stringify(userData));
+    if (data.user) {
+      localStorage.setItem('bonkers_user', JSON.stringify({
+        email: data.user.email,
+        name: name,
+        loggedIn: true
+      }));
+    }
 
     showSuccess('Account Created!', `Welcome to Bonkers Corner, ${name}! Check your email for verification.`);
   });
 
-  // Forgot password form
-  forgotForm?.addEventListener('submit', (e) => {
+  // Forgot password form - Using Supabase
+  forgotForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = document.getElementById('forgotEmail').value;
 
-    // Simulate sending reset email
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/login.html?reset=true`
+    });
+
+    if (error) {
+      alert('Error: ' + error.message);
+      return;
+    }
+
     showSuccess('Check Your Email', `We've sent password reset instructions to ${email}`);
   });
 
