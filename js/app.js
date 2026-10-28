@@ -2,8 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // App State
-  let cart = JSON.parse(localStorage.getItem('bonkers_cart')) || [];
-  let wishlist = JSON.parse(localStorage.getItem('bonkers_wishlist')) || [];
+  let cart = JSON.parse(localStorage.getItem('kaya_cart')) || [];
+  let wishlist = JSON.parse(localStorage.getItem('kaya_wishlist')) || [];
   let currentSlide = 0;
   const selectedSizes = {};
 
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       wishlist.push(id);
     }
-    localStorage.setItem('bonkers_wishlist', JSON.stringify(wishlist));
+    localStorage.setItem('kaya_wishlist', JSON.stringify(wishlist));
     updateWishlistUI();
     renderProducts();
   }
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function saveCart() {
-    localStorage.setItem('bonkers_cart', JSON.stringify(cart));
+    localStorage.setItem('kaya_cart', JSON.stringify(cart));
     updateCartUI();
   }
 

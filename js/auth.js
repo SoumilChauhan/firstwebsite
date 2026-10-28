@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (result.success) {
       if (rememberMe) {
-        localStorage.setItem('bonkers_remember', 'true');
+        localStorage.setItem('kaya_remember', 'true');
       }
 
       showSuccess('Welcome Back!', `Successfully logged in as ${email}`);

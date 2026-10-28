@@ -17,8 +17,8 @@ async function apiRegister(email, password, name) {
     if (!response.ok) throw new Error(data.error || 'Registration failed');
 
     // Save token and user data
-    localStorage.setItem('bonkers_token', data.token);
-    localStorage.setItem('bonkers_user', JSON.stringify(data.user));
+    localStorage.setItem('kaya_token', data.token);
+    localStorage.setItem('kaya_user', JSON.stringify(data.user));
 
     return { success: true, user: data.user };
   } catch (error) {
@@ -40,8 +40,8 @@ async function apiLogin(email, password) {
     if (!response.ok) throw new Error(data.error || 'Login failed');
 
     // Save token and user data
-    localStorage.setItem('bonkers_token', data.token);
-    localStorage.setItem('bonkers_user', JSON.stringify(data.user));
+    localStorage.setItem('kaya_token', data.token);
+    localStorage.setItem('kaya_user', JSON.stringify(data.user));
 
     return { success: true, user: data.user };
   } catch (error) {
@@ -70,7 +70,7 @@ async function apiForgotPassword(email) {
 }
 
 async function apiGetUser() {
-  const token = localStorage.getItem('bonkers_token');
+  const token = localStorage.getItem('kaya_token');
 
   if (!token) return null;
 
@@ -81,8 +81,8 @@ async function apiGetUser() {
 
     if (!response.ok) {
       // Token expired or invalid
-      localStorage.removeItem('bonkers_token');
-      localStorage.removeItem('bonkers_user');
+      localStorage.removeItem('kaya_token');
+      localStorage.removeItem('kaya_user');
       return null;
     }
 
@@ -94,15 +94,15 @@ async function apiGetUser() {
 }
 
 async function apiLogout() {
-  localStorage.removeItem('bonkers_token');
-  localStorage.removeItem('bonkers_user');
+  localStorage.removeItem('kaya_token');
+  localStorage.removeItem('kaya_user');
   window.location.href = 'index.html';
 }
 
 // ==================== ORDERS API FUNCTIONS ====================
 
 async function apiCreateOrder(items, total, shippingAddress, paymentMethod) {
-  const token = localStorage.getItem('bonkers_token');
+  const token = localStorage.getItem('kaya_token');
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/orders`, {
@@ -126,7 +126,7 @@ async function apiCreateOrder(items, total, shippingAddress, paymentMethod) {
 }
 
 async function apiGetOrders() {
-  const token = localStorage.getItem('bonkers_token');
+  const token = localStorage.getItem('kaya_token');
 
   if (!token) return [];
 
@@ -145,7 +145,7 @@ async function apiGetOrders() {
 }
 
 async function apiGetOrder(orderId) {
-  const token = localStorage.getItem('bonkers_token');
+  const token = localStorage.getItem('kaya_token');
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/orders/${orderId}`, {
@@ -178,15 +178,15 @@ async function apiGetProducts() {
 // ==================== HELPER FUNCTIONS ====================
 
 function isAuthenticated() {
-  return !!localStorage.getItem('bonkers_token');
+  return !!localStorage.getItem('kaya_token');
 }
 
 function getCurrentUser() {
-  return JSON.parse(localStorage.getItem('bonkers_user') || 'null');
+  return JSON.parse(localStorage.getItem('kaya_user') || 'null');
 }
 
 function getAuthToken() {
-  return localStorage.getItem('bonkers_token');
+  return localStorage.getItem('kaya_token');
 }
 
 // Export functions globally
