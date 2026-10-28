@@ -28,23 +28,23 @@ DROP POLICY IF EXISTS "Authenticated users can view all orders" ON orders;
 -- 4. Create policy: Users can view their own orders
 CREATE POLICY "Users can view own orders" ON orders
   FOR SELECT
-  USING (auth.jwt() ->> 'email' = user_email);
+  USING (user_email = auth.jwt() ->> 'email');
 
 -- 5. Create policy: Users can create orders
 CREATE POLICY "Users can create orders" ON orders
   FOR INSERT
-  WITH CHECK (auth.jwt() ->> 'email' = user_email);
+  WITH CHECK (user_email = auth.jwt() ->> 'email');
 
 -- 6. Create policy: Users can update their own orders
 CREATE POLICY "Users can update own orders" ON orders
   FOR UPDATE
-  USING (auth.jwt() ->> 'email' = user_email)
-  WITH CHECK (auth.jwt() ->> 'email' = user_email);
+  USING (user_email = auth.jwt() ->> 'email')
+  WITH CHECK (user_email = auth.jwt() ->> 'email');
 
 -- 7. Create policy: Users can delete their own orders
 CREATE POLICY "Users can delete own orders" ON orders
   FOR DELETE
-  USING (auth.jwt() ->> 'email' = user_email);
+  USING (user_email = auth.jwt() ->> 'email');
 
 -- 8. Create policy: Authenticated users can view all orders (for admin/dashboard)
 CREATE POLICY "Authenticated users can view all orders" ON orders
@@ -52,19 +52,10 @@ CREATE POLICY "Authenticated users can view all orders" ON orders
   TO authenticated
   USING (true);
 
--- 9. Create a helper function to get current user email
-CREATE OR REPLACE FUNCTION get_current_user_email()
-RETURNS text AS $$
-  SELECT COALESCE(
-    (auth.jwt() ->> 'email')::text,
-    (auth.uid()::text)
-  );
-$$ LANGUAGE sql STABLE;
-
--- 10. Create index for faster order lookups by user email
+-- 9. Create index for faster order lookups by user email
 CREATE INDEX IF NOT EXISTS idx_orders_user_email ON orders(user_email);
 
--- 11. Verify setup
+-- 10. Verify setup
 SELECT
   'orders table exists' as check_name,
   count(*) as result
