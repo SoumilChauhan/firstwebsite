@@ -17,7 +17,7 @@ async function apiRegister(email, password, name) {
     if (!response.ok) throw new Error(data.error || 'Registration failed');
 
     // Save token and user data
-    localStorage.setItem('kaya_token', data.token);
+    localStorage.setItem('bonkers_token', data.token);
     localStorage.setItem('bonkers_user', JSON.stringify(data.user));
 
     return { success: true, user: data.user };
@@ -40,7 +40,7 @@ async function apiLogin(email, password) {
     if (!response.ok) throw new Error(data.error || 'Login failed');
 
     // Save token and user data
-    localStorage.setItem('kaya_token', data.token);
+    localStorage.setItem('bonkers_token', data.token);
     localStorage.setItem('bonkers_user', JSON.stringify(data.user));
 
     return { success: true, user: data.user };
@@ -70,7 +70,7 @@ async function apiForgotPassword(email) {
 }
 
 async function apiGetUser() {
-  const token = localStorage.getItem('kaya_token');
+  const token = localStorage.getItem('bonkers_token');
 
   if (!token) return null;
 
@@ -81,7 +81,7 @@ async function apiGetUser() {
 
     if (!response.ok) {
       // Token expired or invalid
-      localStorage.removeItem('kaya_token');
+      localStorage.removeItem('bonkers_token');
       localStorage.removeItem('bonkers_user');
       return null;
     }
@@ -94,7 +94,7 @@ async function apiGetUser() {
 }
 
 async function apiLogout() {
-  localStorage.removeItem('kaya_token');
+  localStorage.removeItem('bonkers_token');
   localStorage.removeItem('bonkers_user');
   window.location.href = 'index.html';
 }
@@ -102,7 +102,7 @@ async function apiLogout() {
 // ==================== ORDERS API FUNCTIONS ====================
 
 async function apiCreateOrder(items, total, shippingAddress, paymentMethod) {
-  const token = localStorage.getItem('kaya_token');
+  const token = localStorage.getItem('bonkers_token');
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/orders`, {
@@ -126,7 +126,7 @@ async function apiCreateOrder(items, total, shippingAddress, paymentMethod) {
 }
 
 async function apiGetOrders() {
-  const token = localStorage.getItem('kaya_token');
+  const token = localStorage.getItem('bonkers_token');
 
   if (!token) return [];
 
@@ -145,7 +145,7 @@ async function apiGetOrders() {
 }
 
 async function apiGetOrder(orderId) {
-  const token = localStorage.getItem('kaya_token');
+  const token = localStorage.getItem('bonkers_token');
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/orders/${orderId}`, {
@@ -178,7 +178,7 @@ async function apiGetProducts() {
 // ==================== HELPER FUNCTIONS ====================
 
 function isAuthenticated() {
-  return !!localStorage.getItem('kaya_token');
+  return !!localStorage.getItem('bonkers_token');
 }
 
 function getCurrentUser() {
@@ -186,7 +186,7 @@ function getCurrentUser() {
 }
 
 function getAuthToken() {
-  return localStorage.getItem('kaya_token');
+  return localStorage.getItem('bonkers_token');
 }
 
 // Export functions globally
