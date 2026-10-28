@@ -1,4 +1,4 @@
-// Bonkers Corner — Authentication Script with Supabase Integration
+// Bonkers Corner — Authentication Script with Backend API
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const successState = document.getElementById('authSuccess');
   const successTitle = document.getElementById('successTitle');
   const successMessage = document.getElementById('successMessage');
+
+  // Check if user is already logged in
+  checkAuthState();
 
   // Password visibility toggles
   const togglePasswords = document.querySelectorAll('.toggle-password');
@@ -42,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
       forms.forEach(form => form.classList.remove('active'));
       document.getElementById(`${targetTab}Form`).classList.add('active');
 
-      // Hide success state when switching tabs
       successState.classList.remove('active');
     });
   });
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Login form submission - Using Supabase
+  // Login form submission - Using Backend API
   loginForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -68,33 +70,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = document.getElementById('loginPassword').value;
     const rememberMe = document.getElementById('rememberMe').checked;
 
-    // Call Supabase Auth
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
+    const result = await apiAuth.login(email, password);
 
-    if (error) {
-      alert('Login Error: ' + error.message);
-      return;
-    }
-
-    // Save session locally
-    if (data.session) {
-      localStorage.setItem('bonkers_user', JSON.stringify({
-        email: data.user.email,
-        name: data.user.user_metadata?.full_name || 'User',
-        loggedIn: true
-      }));
+    if (result.success) {
       if (rememberMe) {
         localStorage.setItem('bonkers_remember', 'true');
       }
-    }
 
-    showSuccess('Welcome Back!', `Successfully logged in as ${email}`);
+      showSuccess('Welcome Back!', `Successfully logged in as ${email}`);
+
+      // Redirect after 2 seconds
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+    } else {
+      alert(result.error || 'Login failed');
+    }
   });
 
-  // Signup form submission - Using Supabase
+  // Signup form submission - Using Backend API
   signupForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -104,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirm = document.getElementById('signupConfirm').value;
     const agreeTerms = document.getElementById('agreeTerms').checked;
 
-    // Validate passwords match
     if (password !== confirm) {
       alert('Passwords do not match!');
       return;
@@ -115,50 +108,33 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Call Supabase Auth for signup
-    const { data, error } = await supabaseClient.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: {
-          full_name: name
-        }
-      }
-    });
+    const result = await apiAuth.register(email, password, name);
 
-    if (error) {
-      alert('Signup Error: ' + error.message);
-      return;
+    if (result.success) {
+      showSuccess('Account Created!', `Welcome to Bonkers Corner, ${name}! You can now shop with us.`);
+
+      // Redirect after 2 seconds
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+    } else {
+      alert(result.error || 'Signup failed');
     }
-
-    // Save user data
-    if (data.user) {
-      localStorage.setItem('bonkers_user', JSON.stringify({
-        email: data.user.email,
-        name: name,
-        loggedIn: true
-      }));
-    }
-
-    showSuccess('Account Created!', `Welcome to Bonkers Corner, ${name}! Check your email for verification.`);
   });
 
-  // Forgot password form - Using Supabase
+  // Forgot password form - Using Backend API
   forgotForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = document.getElementById('forgotEmail').value;
 
-    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/login.html?reset=true`
-    });
+    const result = await apiAuth.forgotPassword(email);
 
-    if (error) {
-      alert('Error: ' + error.message);
-      return;
+    if (result.success) {
+      showSuccess('Check Your Email', result.message || 'We\'ve sent password reset instructions to your email');
+    } else {
+      alert(result.error || 'Failed to send reset email');
     }
-
-    showSuccess('Check Your Email', `We've sent password reset instructions to ${email}`);
   });
 
   // Password strength meter
@@ -192,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Show success state
   function showSuccess(title, message) {
     forms.forEach(form => form.classList.remove('active'));
     successTitle.textContent = title;
@@ -200,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
     successState.classList.add('active');
   }
 
-  // Show specific form
   function showForm(formName) {
     successState.classList.remove('active');
     forms.forEach(form => form.classList.remove('active'));
@@ -217,12 +191,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Check for remembered user
-  const remembered = localStorage.getItem('bonkers_remember') === 'true';
-  const savedUser = JSON.parse(localStorage.getItem('bonkers_user') || '{}');
-
-  if (remembered && savedUser.email) {
-    document.getElementById('loginEmail').value = savedUser.email;
-    document.getElementById('rememberMe').checked = true;
+  function checkAuthState() {
+    const user = apiAuth.getCurrentUser();
+    if (user && user.loggedIn) {
+      showSuccess(
+        'Already Logged In',
+        `Welcome back, ${user.name}! Redirecting to homepage...`
+      );
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1500);
+    }
   }
 });
