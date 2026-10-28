@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonkers Corner | Unisex Luxury Streetwear Clothing Brand</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 1. Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-marquee">
+      <div class="announcement-item">
+        <span>🦈 AS SEEN ON SHARK TANK 🦈</span>
+        <span>USE CODE <span class="code">SHARKTANK10</span> FOR 10% OFF</span>
+        <span>•</span>
+        <span>5% EXTRA OFF ON ALL PREPAID ORDERS</span>
+        <span>•</span>
+        <span>100% MADE IN INDIA STREETWEAR</span>
+      </div>
+      <div class="announcement-item">
+        <span>🦈 AS SEEN ON SHARK TANK 🦈</span>
+        <span>USE CODE <span class="code">SHARKTANK10</span> FOR 10% OFF</span>
+        <span>•</span>
+        <span>5% EXTRA OFF ON ALL PREPAID ORDERS</span>
+        <span>•</span>
+        <span>100% MADE IN INDIA STREETWEAR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Sticky Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo">
+        BONKERS<span class="highlight">CORNER</span>
+      </a>
+
+      <!-- Main Navigation Menu -->
+      <nav class="main-nav">
+        <div class="nav-item-dropdown">
+          <a href="#women" class="nav-link">Women</a>
+          <div class="mega-menu">
+            <div class="mega-column">
+              <h4>Top Categories</h4>
+              <ul>
+                <li><a href="#">Oversized T-Shirts</a></li>
+                <li><a href="#">Loose Fit Joggers</a></li>
+                <li><a href="#">Hoodies & Sweatshirts</a></li>
+                <li><a href="#">Cargo Trousers</a></li>
+              </ul>
+            </div>
+            <div class="mega-column">
+              <h4>Collections</h4>
+              <ul>
+                <li><a href="#">Culture Corner</a></li>
+                <li><a href="#">Bonkers X Anushka Sen</a></li>
+                <li><a href="#">Shades of Winter</a></li>
+                <li><a href="#">The Knit Edit</a></li>
+              </ul>
+            </div>
+            <div class="mega-column">
+              <h4>Essentials</h4>
+              <ul>
+                <li><a href="#">Co-Ord Sets</a></li>
+                <li><a href="#">Basics & Tops</a></li>
+                <li><a href="#">Tote Bags & Accessories</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item-dropdown">
+          <a href="#men" class="nav-link">Men</a>
+          <div class="mega-menu">
+            <div class="mega-column">
+              <h4>Topwear</h4>
+              <ul>
+                <li><a href="#">Oversized Tees</a></li>
+                <li><a href="#">Relaxed Fit Shirts</a></li>
+                <li><a href="#">Polo Tees</a></li>
+                <li><a href="#">Heavyweight Hoodies</a></li>
+              </ul>
+            </div>
+            <div class="mega-column">
+              <h4>Bottomwear</h4>
+              <ul>
+                <li><a href="#">Streetwear Cargos</a></li>
+                <li><a href="#">Parachute Pants</a></li>
+                <li><a href="#">Loose Fit Joggers</a></li>
+              </ul>
+            </div>
+            <div class="mega-column">
+              <h4>Drops</h4>
+              <ul>
+                <li><a href="#">Supima Cotton Drop</a></li>
+                <li><a href="#">Polyamide Activewear</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <a href="#new-in" class="nav-link">New Arrivals</a>
+        <a href="#bestsellers" class="nav-link">Best Sellers</a>
+        <a href="#accessories" class="nav-link">Accessories</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Login">
+          <a href="login.html" style="display: flex;"><i class="far fa-user"></i></a>
+        </button>
+        <button class="icon-btn" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+          <span class="badge-count" id="wishlistBadge">0</span>
+        </button>
+        <button class="icon-btn" id="cartToggleBtn" aria-label="Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="badge-count" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Mobile Menu Overlay -->
+  <div class="mobile-menu-backdrop" id="mobileMenuBackdrop">
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="brand-logo">BONKERS<span class="highlight">CORNER</span></a>
+        <button class="close-mobile-menu" id="closeMobileMenu" aria-label="Close Menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#new-in">New Arrivals</a>
+        <a href="#bestsellers">Best Sellers</a>
+        <a href="#women">Women</a>
+        <a href="#men">Men</a>
+        <a href="#accessories">Accessories</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+        <a href="#"><i class="fab fa-pinterest"></i> Pinterest</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Hero Slider Carousel -->
+  <section class="hero-slider" id="heroSlider">
+    <!-- Slides rendered dynamically by js/app.js -->
+    <div class="slider-controls">
+      <button class="slider-btn" id="prevSlide" aria-label="Previous Slide">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-btn" id="nextSlide" aria-label="Next Slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- 4. Main Content Container -->
+  <main class="container">
+
+    <!-- Category Visual Banners Grid -->
+    <section class="section-header">
+      <h2>SHOP BY CATEGORY</h2>
+      <p>Discover the latest streetwear trends tailored for you</p>
+    </section>
+
+    <!-- Filter Controls -->
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Products</button>
+        <button class="filter-tab" data-filter="women">Women</button>
+        <button class="filter-tab" data-filter="men">Men</button>
+        <button class="filter-tab" data-filter="unisex">Unisex</button>
+        <button class="filter-tab" data-filter="accessories">Accessories</button>
+      </div>
+      <div class="filter-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search products...">
+      </div>
+    </div>
+
+    <div class="categories-grid">
+      <div class="category-card" onclick="location.href='#women'">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Women Streetwear">
+        <div class="category-overlay">
+          <h3>WOMEN</h3>
+          <span>EXPLORE COLLECTION →</span>
+        </div>
+      </div>
+      <div class="category-card" onclick="location.href='#men'">
+        <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=600&q=80" alt="Men Streetwear">
+        <div class="category-overlay">
+          <h3>MEN</h3>
+          <span>EXPLORE COLLECTION →</span>
+        </div>
+      </div>
+      <div class="category-card" onclick="location.href='#accessories'">
+        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" alt="Accessories">
+        <div class="category-overlay">
+          <h3>ACCESSORIES</h3>
+          <span>SHOP BAGS & CAPS →</span>
+        </div>
+      </div>
+    </div>
+
+  <!-- 5. New In Products Section -->
+    <section class="section-header" id="new-in">
+      <h2>NEW IN</h2>
+      <p>Upgrade your closet with everything trendy and new</p>
+    </section>
+
+    <div class="products-grid" id="newInGrid">
+      <!-- Product Cards injected by js/app.js -->
+    </div>
+
+  </main>
+
+  <!-- Mobile Product Filter (shown on mobile) -->
+  <div class="mobile-filter" id="mobileFilter">
+    <button class="mobile-filter-btn" id="mobileFilterToggle">
+      <i class="fas fa-filter"></i> FILTER
+    </button>
+    <div class="mobile-filter-content" id="mobileFilterContent">
+      <div class="filter-options">
+        <span class="filter-option active" data-filter="all">All</span>
+        <span class="filter-option" data-filter="women">Women</span>
+        <span class="filter-option" data-filter="men">Men</span>
+        <span class="filter-option" data-filter="unisex">Unisex</span>
+        <span class="filter-option" data-filter="accessories">Accessories</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Product Filter (shown on mobile) -->
+  <div class="mobile-filter" id="mobileFilter">
+    <button class="mobile-filter-btn" id="mobileFilterToggle">
+      <i class="fas fa-filter"></i> FILTER
+    </button>
+    <div class="mobile-filter-content" id="mobileFilterContent">
+      <div class="filter-options">
+        <span class="filter-option active" data-filter="all">All</span>
+        <span class="filter-option" data-filter="women">Women</span>
+        <span class="filter-option" data-filter="men">Men</span>
+        <span class="filter-option" data-filter="unisex">Unisex</span>
+        <span class="filter-option" data-filter="accessories">Accessories</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. USPs Highlights Bar -->
+  <section class="usps-section">
+    <div class="container usps-grid">
+      <div class="usp-item">
+        <div class="usp-icon"><i class="fas fa-shipping-fast"></i></div>
+        <h4>FAST DISPATCH</h4>
+        <p>Orders shipped within 48 hours of placement.</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="fas fa-tags"></i></div>
+        <h4>PREPAID DISCOUNT</h4>
+        <p>Flat 5% OFF on all prepaid payment options.</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="fas fa-flag"></i></div>
+        <h4>100% MADE IN INDIA</h4>
+        <p>From raw fabric sourcing to final garment craftsmanship.</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon"><i class="fas fa-award"></i></div>
+        <h4>AFFORDABLE LUXURY</h4>
+        <p>Premium GSM fabrics crafted at transparent prices.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Best Sellers Section -->
+  <main class="container">
+    <section class="section-header" id="bestsellers">
+      <h2>BEST SELLERS</h2>
+      <p>Handpicked and crafted for maximum comfort and style</p>
+    </section>
+
+    <div class="products-grid" id="bestsellersGrid">
+      <!-- Product Cards injected by js/app.js -->
+    </div>
+
+    <!-- 8. Testimonials Section -->
+    <section class="section-header">
+      <h2>WHAT OUR COMMUNITY SAYS</h2>
+      <p>Real feedback from streetwear enthusiasts across India</p>
+    </section>
+
+    <div class="testimonials-grid" id="testimonialsGrid">
+      <!-- Testimonials injected by js/app.js -->
+    </div>
+  </main>
+
+  <!-- 9. Slide-out Cart Drawer -->
+  <div class="cart-drawer-backdrop" id="cartDrawerBackdrop">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3>YOUR CART</h3>
+        <button class="close-cart-btn" id="closeCartBtn">&times;</button>
+      </div>
+
+      <div class="shipping-progress">
+        <div id="shippingText">Add ₹1,999 more to unlock FREE Shipping</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+      </div>
+
+      <div class="cart-body" id="cartBody">
+        <!-- Cart Items injected by js/app.js -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-subtotal">
+          <span>SUBTOTAL</span>
+          <span id="cartSubtotal">₹0</span>
+        </div>
+        <button class="btn-checkout">PROCEED TO CHECKOUT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>ABOUT BONKERS CORNER</h4>
+        <p>Bonkers Corner is where comfort meets crazy! High quality, affordable unisex luxury streetwear. Join the revolution.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email" class="newsletter-input">
+          <button class="newsletter-btn">JOIN</button>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>SHOP</h4>
+        <ul>
+          <li><a href="#new-in">New Arrivals</a></li>
+          <li><a href="#bestsellers">Best Sellers</a></li>
+          <li><a href="#">Oversized T-Shirts</a></li>
+          <li><a href="#">Hoodies & Sweatshirts</a></li>
+          <li><a href="#">Joggers & Cargos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>HELP & INFO</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>CONNECT</h4>
+        <ul>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+          <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bonkers Corner Clone. All rights reserved. 100% Made in India.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

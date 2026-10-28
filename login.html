@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Bonkers Corner</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+  <!-- 1. Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-marquee">
+      <div class="announcement-item">
+        <span>🦈 AS SEEN ON SHARK TANK 🦈</span>
+        <span>USE CODE <span class="code">SHARKTANK10</span> FOR 10% OFF</span>
+        <span>•</span>
+        <span>5% EXTRA OFF ON ALL PREPAID ORDERS</span>
+        <span>•</span>
+        <span>100% MADE IN INDIA STREETWEAR</span>
+      </div>
+      <div class="announcement-item">
+        <span>🦈 AS SEEN ON SHARK TANK 🦈</span>
+        <span>USE CODE <span class="code">SHARKTANK10</span> FOR 10% OFF</span>
+        <span>•</span>
+        <span>5% EXTRA OFF ON ALL PREPAID ORDERS</span>
+        <span>•</span>
+        <span>100% MADE IN INDIA STREETWEAR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        BONKERS<span class="highlight">CORNER</span>
+      </a>
+      <div class="header-actions">
+        <a href="index.html" class="icon-btn">
+          <i class="fas fa-home"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Auth Container -->
+  <main class="auth-main">
+    <div class="auth-container">
+      <!-- Auth Sidebar (Visual) -->
+      <div class="auth-sidebar">
+        <div class="auth-sidebar-content">
+          <h2>JOIN THE REVOLUTION</h2>
+          <p>Get early access to new drops, exclusive member-only discounts, and style recommendations.</p>
+          <div class="auth-benefits">
+            <div class="benefit-item">
+              <i class="fas fa-bolt"></i>
+              <span>Early access to limited drops</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-tag"></i>
+              <span>Member-only discounts</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-truck"></i>
+              <span>Free shipping on ₹999+ orders</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-heart"></i>
+              <span>Save your wishlist & orders</span>
+            </div>
+          </div>
+        </div>
+        <div class="auth-sidebar-bg"></div>
+      </div>
+
+      <!-- Auth Form Panel -->
+      <div class="auth-form-panel">
+        <div class="auth-form-container">
+          <!-- Tabs -->
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">LOGIN</button>
+            <button class="auth-tab" data-tab="signup">SIGN UP</button>
+          </div>
+
+          <!-- LOGIN FORM -->
+          <form class="auth-form active" id="loginForm">
+            <h2>Welcome Back</h2>
+            <p class="auth-subtitle">Sign in to your account</p>
+
+            <div class="form-group">
+              <label for="loginEmail">EMAIL ADDRESS</label>
+              <div class="input-wrapper">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="loginEmail" placeholder="your@email.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="loginPassword">PASSWORD</label>
+              <div class="input-wrapper">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                <button type="button" class="toggle-password" data-target="loginPassword">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <a href="#" class="forgot-password" id="forgotPasswordLink">Forgot Password?</a>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="rememberMe">
+                <span>Remember me for 30 days</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-auth btn-auth-primary">
+              LOGIN <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <div class="auth-divider">
+              <span>OR CONTINUE WITH</span>
+            </div>
+
+            <div class="social-login">
+              <button type="button" class="btn-social btn-google">
+                <i class="fab fa-google"></i>
+                <span>Google</span>
+              </button>
+              <button type="button" class="btn-social btn-facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- SIGNUP FORM -->
+          <form class="auth-form" id="signupForm">
+            <h2>Create Account</h2>
+            <p class="auth-subtitle">Join Bonkers Corner today</p>
+
+            <div class="form-group">
+              <label for="signupName">FULL NAME</label>
+              <div class="input-wrapper">
+                <i class="fas fa-user"></i>
+                <input type="text" id="signupName" placeholder="Enter your full name" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupEmail">EMAIL ADDRESS</label>
+              <div class="input-wrapper">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="signupEmail" placeholder="your@email.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupPassword">PASSWORD</label>
+              <div class="input-wrapper">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="signupPassword" placeholder="Create a password" required>
+                <button type="button" class="toggle-password" data-target="signupPassword">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="password-strength">
+                <div class="strength-bars">
+                  <span class="strength-bar" data-level="1"></span>
+                  <span class="strength-bar" data-level="2"></span>
+                  <span class="strength-bar" data-level="3"></span>
+                  <span class="strength-bar" data-level="4"></span>
+                </div>
+                <span class="strength-text">Strength: <span>Weak</span></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupConfirm">CONFIRM PASSWORD</label>
+              <div class="input-wrapper">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="signupConfirm" placeholder="Confirm your password" required>
+                <button type="button" class="toggle-password" data-target="signupConfirm">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="agreeTerms" required>
+                <span>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-auth btn-auth-primary">
+              CREATE ACCOUNT <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+
+          <!-- FORGOT PASSWORD FORM -->
+          <form class="auth-form" id="forgotForm">
+            <h2>Reset Password</h2>
+            <p class="auth-subtitle">Enter your email to receive reset instructions</p>
+
+            <div class="form-group">
+              <label for="forgotEmail">EMAIL ADDRESS</label>
+              <div class="input-wrapper">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="forgotEmail" placeholder="your@email.com" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-auth btn-auth-primary">
+              SEND RESET LINK <i class="fas fa-paper-plane"></i>
+            </button>
+
+            <button type="button" class="btn-auth btn-auth-secondary back-to-login" data-back="login">
+              <i class="fas fa-arrow-left"></i> Back to Login
+            </button>
+          </form>
+
+          <!-- SUCCESS MESSAGE -->
+          <div class="auth-success" id="authSuccess">
+            <div class="success-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 id="successTitle">Check Your Email</h2>
+            <p id="successMessage">We've sent password reset instructions to your email.</p>
+            <button type="button" class="btn-auth btn-auth-primary" onclick="location.href='index.html'">
+              BACK TO SHOP <i class="fas fa-shopping-bag"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>ABOUT</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>HELP</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>LEGAL</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>FOLLOW US</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bonkers Corner Clone. All rights reserved. 100% Made in India.</p>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

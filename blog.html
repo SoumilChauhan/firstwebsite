@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonkers Corner — Blog & Style Guides</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+  <!-- 1. Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-marquee">
+      <div class="announcement-item">
+        <span>🦈 AS SEEN ON SHARK TANK 🦈</span>
+        <span>USE CODE <span class="code">SHARKTANK10</span> FOR 10% OFF</span>
+        <span>•</span>
+        <span>5% EXTRA OFF ON ALL PREPAID ORDERS</span>
+        <span>•</span>
+        <span>100% MADE IN INDIA STREETWEAR</span>
+      </div>
+      <div class="announcement-item">
+        <span>🦈 AS SEEN ON SHARK TANK 🦈</span>
+        <span>USE CODE <span class="code">SHARKTANK10</span> FOR 10% OFF</span>
+        <span>•</span>
+        <span>5% EXTRA OFF ON ALL PREPAID ORDERS</span>
+        <span>•</span>
+        <span>100% MADE IN INDIA STREETWEAR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Sticky Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo">
+        BONKERS<span class="highlight">CORNER</span>
+      </a>
+
+      <!-- Main Navigation Menu -->
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html#new-in" class="nav-link">New Arrivals</a>
+        <a href="index.html#bestsellers" class="nav-link">Best Sellers</a>
+        <a href="index.html#women" class="nav-link">Women</a>
+        <a href="index.html#men" class="nav-link">Men</a>
+        <a href="index.html#accessories" class="nav-link">Accessories</a>
+        <a href="blog.html" class="nav-link" style="color: var(--accent-yellow);">Blog</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <a href="#" class="icon-btn" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </a>
+        <a href="#" class="icon-btn" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+          <span class="badge-count">0</span>
+        </a>
+        <a href="index.html" class="icon-btn" aria-label="Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="badge-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Mobile Menu Overlay -->
+  <div class="mobile-menu-backdrop" id="mobileMenuBackdrop">
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="brand-logo">BONKERS<span class="highlight">CORNER</span></a>
+        <button class="close-mobile-menu" id="closeMobileMenu" aria-label="Close Menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="index.html#new-in">New Arrivals</a>
+        <a href="index.html#bestsellers">Best Sellers</a>
+        <a href="index.html#women">Women</a>
+        <a href="index.html#men">Men</a>
+        <a href="index.html#accessories">Accessories</a>
+        <a href="blog.html" class="active">Blog</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+        <a href="#"><i class="fab fa-pinterest"></i> Pinterest</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Blog Header -->
+  <section class="blog-hero">
+    <div class="blog-hero-content">
+      <span class="blog-tag">THE EDIT</span>
+      <h1>STREETWEAR JOURNAL</h1>
+      <p>Trend reports, styling guides, and behind-the-scenes from Bonkers Corner</p>
+    </div>
+  </section>
+
+  <!-- 5. Main Blog Content -->
+  <main class="container blog-main">
+    <!-- Blog Filters -->
+    <div class="blog-filters">
+      <button class="filter-btn active" data-category="all">All Posts</button>
+      <button class="filter-btn" data-category="trending">Trending</button>
+      <button class="filter-btn" data-category="style-guide">Style Guides</button>
+      <button class="filter-btn" data-category="news">Brand News</button>
+      <button class="filter-btn" data-category="culture">Culture</button>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid" id="blogGrid">
+      <!-- Blog posts injected by JavaScript -->
+    </div>
+
+    <!-- Load More -->
+    <div class="load-more">
+      <button class="btn-primary" id="loadMoreBtn">LOAD MORE POSTS</button>
+    </div>
+  </main>
+
+  <!-- 6. Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container newsletter-content">
+      <h2>STAY IN THE LOOP</h2>
+      <p>Get exclusive drops, early access, and style tips delivered to your inbox.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn-primary">SUBSCRIBE</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 7. Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>ABOUT BONKERS CORNER</h4>
+        <p>Bonkers Corner is where comfort meets crazy! High quality, affordable unisex luxury streetwear. Join the revolution.</p>
+      </div>
+      <div class="footer-col">
+        <h4>SHOP</h4>
+        <ul>
+          <li><a href="index.html#new-in">New Arrivals</a></li>
+          <li><a href="index.html#bestsellers">Best Sellers</a></li>
+          <li><a href="index.html">Oversized T-Shirts</a></li>
+          <li><a href="index.html">Hoodies & Sweatshirts</a></li>
+          <li><a href="index.html">Joggers & Cargos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>HELP & INFO</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CONNECT</h4>
+        <ul>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+          <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bonkers Corner Clone. All rights reserved. 100% Made in India.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script src="js/data.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>
