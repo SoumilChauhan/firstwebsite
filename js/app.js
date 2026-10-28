@@ -35,6 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileFilterContent = document.getElementById('mobileFilterContent');
   const mobileFilterOptions = document.querySelectorAll('.filter-option');
 
+  // User Menu Elements
+  const authBtn = document.getElementById('authBtn');
+  const userMenu = document.getElementById('userMenu');
+  const userAvatarBtn = document.getElementById('userAvatarBtn');
+  const userDropdown = document.getElementById('userDropdown');
+  const headerUserName = document.getElementById('headerUserName');
+  const headerUserEmail = document.getElementById('headerUserEmail');
+  const logoutBtn = document.getElementById('logoutBtn');
+
   // Initial Setup
   initHeroSlider();
   renderProducts();
@@ -42,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   updateWishlistUI();
   setupEventListeners();
+  checkUserAuth(); // Check if user is logged in
 
   // --- Hero Slider Logic ---
   function initHeroSlider() {
@@ -323,6 +333,42 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
+  // --- User Menu Functions ---
+  function checkUserAuth() {
+    const user = apiAuth.getCurrentUser();
+    if (user && user.loggedIn) {
+      showUserMenu(user);
+    } else {
+      hideUserMenu();
+    }
+  }
+
+  function showUserMenu(user) {
+    if (authBtn) authBtn.style.display = 'none';
+    if (userMenu) {
+      userMenu.style.display = 'flex';
+      if (headerUserName) headerUserName.textContent = user.name || 'User';
+      if (headerUserEmail) headerUserEmail.textContent = user.email || '';
+    }
+  }
+
+  function hideUserMenu() {
+    if (userMenu) userMenu.style.display = 'none';
+    if (authBtn) authBtn.style.display = 'block';
+  }
+
+  function toggleUserDropdown() {
+    if (userDropdown) {
+      userDropdown.classList.toggle('active');
+    }
+  }
+
+  function handleLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+      apiAuth.logout();
+    }
+  }
+
   // --- General Event Listeners ---
   function setupEventListeners() {
     // Cart
@@ -337,6 +383,24 @@ document.addEventListener('DOMContentLoaded', () => {
     closeMobileMenu?.addEventListener('click', closeMobileMenuFunc);
     mobileMenuBackdrop?.addEventListener('click', (e) => {
       if (e.target === mobileMenuBackdrop) closeMobileMenuFunc();
+    });
+
+    // User Menu
+    userAvatarBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleUserDropdown();
+    });
+
+    logoutBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleLogout();
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (userDropdown && !userAvatarBtn?.contains(e.target)) {
+        userDropdown.classList.remove('active');
+      }
     });
 
     // Filter Tabs
