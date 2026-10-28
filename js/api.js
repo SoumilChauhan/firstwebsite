@@ -1,4 +1,4 @@
-// Bonkers Corner — Backend API Integration
+// KAYA — Backend API Integration
 
 const API_BASE_URL = 'http://localhost:3000';
 

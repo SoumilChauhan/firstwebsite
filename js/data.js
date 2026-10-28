@@ -1,4 +1,4 @@
-// Product catalog & site data for Bonkers Corner clone
+// Product catalog & site data for KAYA clone
 
 const PRODUCTS = [
   {
@@ -181,7 +181,7 @@ const REVIEWS = [
   {
     id: 3,
     author: 'Ansh Jadli',
-    text: 'Change your name to quality.com! I swear I loved the fabric quality so much. Thanks Bonkers Corner!',
+    text: 'Change your name to quality.com! I swear I loved the fabric quality so much. Thanks KAYA!',
     rating: 5,
     verified: true,
     product: 'Midnight Miles Loose Fit Joggers'

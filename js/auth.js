@@ -1,4 +1,4 @@
-// Bonkers Corner — Authentication Script with Backend API
+// KAYA — Authentication Script with Backend API
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const result = await apiAuth.register(email, password, name);
 
     if (result.success) {
-      showSuccess('Account Created!', `Welcome to Bonkers Corner, ${name}! You can now shop with us.`);
+      showSuccess('Account Created!', `Welcome to KAYA, ${name}! You can now shop with us.`);
 
       // Redirect after 2 seconds
       setTimeout(() => {

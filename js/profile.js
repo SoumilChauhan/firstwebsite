@@ -1,4 +1,4 @@
-// Bonkers Corner — Profile Page Script
+// KAYA — Profile Page Script
 
 document.addEventListener('DOMContentLoaded', () => {
   const userName = document.getElementById('userName');

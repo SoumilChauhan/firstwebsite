@@ -1,11 +1,11 @@
-// Email Templates for Bonkers Corner
+// Email Templates for KAYA
 
 // ============================================
 // PASSWORD RESET EMAIL TEMPLATE
 // ============================================
 
 const PASSWORD_RESET_TEMPLATE = {
-  subject: 'Reset Your Bonkers Corner Password',
+  subject: 'Reset Your KAYA Password',
   html: `
 <!DOCTYPE html>
 <html>
@@ -34,14 +34,14 @@ const PASSWORD_RESET_TEMPLATE = {
     <div class="content">
       <h2>Reset Your Password</h2>
       <p>Hi there,</p>
-      <p>We received a request to reset your password for your Bonkers Corner account.</p>
+      <p>We received a request to reset your password for your KAYA account.</p>
       <p>Click the button below to create a new password:</p>
       <a href="{{RESET_LINK}}" class="button">RESET PASSWORD</a>
       <p>This link will expire in 1 hour. If you didn't make this request, please ignore this email.</p>
-      <p>Stay Bonkers!<br>The Bonkers Corner Team</p>
+      <p>Stay Bonkers!<br>The KAYA Team</p>
     </div>
     <div class="footer">
-      <p>&copy; 2026 Bonkers Corner. All rights reserved.</p>
+      <p>&copy; 2026 KAYA. All rights reserved.</p>
       <p>100% Made in India Streetwear</p>
     </div>
   </div>
@@ -49,11 +49,11 @@ const PASSWORD_RESET_TEMPLATE = {
 </html>
   `,
   text: `
-Reset Your Bonkers Corner Password
+Reset Your KAYA Password
 
 Hi there,
 
-We received a request to reset your password for your Bonkers Corner account.
+We received a request to reset your password for your KAYA account.
 
 Click the link below to create a new password:
 {{RESET_LINK}}
@@ -61,10 +61,10 @@ Click the link below to create a new password:
 This link will expire in 1 hour. If you didn't make this request, please ignore this email.
 
 Stay Bonkers!
-The Bonkers Corner Team
+The KAYA Team
 
 ---
-© 2026 Bonkers Corner. All rights reserved.
+© 2026 KAYA. All rights reserved.
 100% Made in India Streetwear
   `
 };
@@ -74,7 +74,7 @@ The Bonkers Corner Team
 // ============================================
 
 const ORDER_CONFIRMATION_TEMPLATE = {
-  subject: 'Order Confirmed! #{{ORDER_ID}} - Bonkers Corner',
+  subject: 'Order Confirmed! #{{ORDER_ID}} - KAYA',
   html: `
 <!DOCTYPE html>
 <html>
@@ -121,10 +121,10 @@ const ORDER_CONFIRMATION_TEMPLATE = {
 
       <p>Current Status: <span class="status-badge">{{ORDER_STATUS}}</span></p>
       <p>Your order will be shipped within 48 hours from the time the order is placed.</p>
-      <p>Stay Bonkers!<br>The Bonkers Corner Team</p>
+      <p>Stay Bonkers!<br>The KAYA Team</p>
     </div>
     <div class="footer">
-      <p>&copy; 2026 Bonkers Corner. All rights reserved.</p>
+      <p>&copy; 2026 KAYA. All rights reserved.</p>
       <p>100% Made in India Streetwear</p>
     </div>
   </div>
@@ -132,7 +132,7 @@ const ORDER_CONFIRMATION_TEMPLATE = {
 </html>
   `,
   text: `
-Order Confirmation - Bonkers Corner
+Order Confirmation - KAYA
 
 Hi {{USER_NAME}},
 
@@ -147,10 +147,10 @@ Status: {{ORDER_STATUS}}
 Your order will be shipped within 48 hours.
 
 Stay Bonkers!
-The Bonkers Corner Team
+The KAYA Team
 
 ---
-© 2026 Bonkers Corner. All rights reserved.
+© 2026 KAYA. All rights reserved.
 100% Made in India Streetwear
   `
 };

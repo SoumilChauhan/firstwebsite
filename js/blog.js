@@ -1,4 +1,4 @@
-// Bonkers Corner — Blog Page Script
+// KAYA — Blog Page Script
 
 document.addEventListener('DOMContentLoaded', () => {
   const blogGrid = document.getElementById('blogGrid');

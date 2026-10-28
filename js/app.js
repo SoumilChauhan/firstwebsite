@@ -1,4 +1,4 @@
-// Bonkers Corner Clone — Main Interactivity Script
+// KAYA Clone — Main Interactivity Script
 
 document.addEventListener('DOMContentLoaded', () => {
   // App State
