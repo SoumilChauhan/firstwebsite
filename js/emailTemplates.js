@@ -38,7 +38,7 @@ const PASSWORD_RESET_TEMPLATE = {
       <p>Click the button below to create a new password:</p>
       <a href="{{RESET_LINK}}" class="button">RESET PASSWORD</a>
       <p>This link will expire in 1 hour. If you didn't make this request, please ignore this email.</p>
-      <p>Stay Bonkers!<br>The KAYA Team</p>
+      <p>Stay KAYA!<br>The KAYA Team</p>
     </div>
     <div class="footer">
       <p>&copy; 2026 KAYA. All rights reserved.</p>
@@ -60,7 +60,7 @@ Click the link below to create a new password:
 
 This link will expire in 1 hour. If you didn't make this request, please ignore this email.
 
-Stay Bonkers!
+Stay KAYA!
 The KAYA Team
 
 ---
@@ -121,7 +121,7 @@ const ORDER_CONFIRMATION_TEMPLATE = {
 
       <p>Current Status: <span class="status-badge">{{ORDER_STATUS}}</span></p>
       <p>Your order will be shipped within 48 hours from the time the order is placed.</p>
-      <p>Stay Bonkers!<br>The KAYA Team</p>
+      <p>Stay KAYA!<br>The KAYA Team</p>
     </div>
     <div class="footer">
       <p>&copy; 2026 KAYA. All rights reserved.</p>
@@ -146,7 +146,7 @@ Status: {{ORDER_STATUS}}
 
 Your order will be shipped within 48 hours.
 
-Stay Bonkers!
+Stay KAYA!
 The KAYA Team
 
 ---
