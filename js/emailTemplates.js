@@ -29,7 +29,7 @@ const PASSWORD_RESET_TEMPLATE = {
 <body>
   <div class="container">
     <div class="header">
-      <h1>BONKERS CORNER</h1>
+      <h1>KAYA</h1>
     </div>
     <div class="content">
       <h2>Reset Your Password</h2>
@@ -103,7 +103,7 @@ const ORDER_CONFIRMATION_TEMPLATE = {
 <body>
   <div class="container">
     <div class="header">
-      <h1>BONKERS CORNER</h1>
+      <h1>KAYA</h1>
     </div>
     <div class="content">
       <h2>Order Confirmed!</h2>

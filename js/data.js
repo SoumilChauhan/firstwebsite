@@ -67,7 +67,7 @@ const PRODUCTS = [
   },
   {
     id: 'prod-5',
-    name: 'Bonkers X Anushka Sen Oversized Hoodie',
+    name: 'KAYA X Anushka Sen Oversized Hoodie',
     category: 'women',
     subCategory: 'hoodies',
     price: 2299,

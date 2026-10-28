@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 4,
-      title: 'Bonkers X Anushka Sen: The Collaboration',
+      title: 'KAYA X Anushka Sen: The Collaboration',
       excerpt: 'Behind the scenes of our most ambitious drop yet. Meet the talent and discover the creative vision behind every piece.',
       category: 'news',
       date: 'Oct 5, 2026',
