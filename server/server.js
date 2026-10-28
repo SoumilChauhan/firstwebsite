@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
@@ -25,45 +26,31 @@ app.post('/api/auth/register', async (req, res) => {
   try {
     const { email, password, name } = req.body;
 
-    // Check if user already exists in Supabase auth
-    const { data: existingUser, error: checkError } = await supabase
-      .from('auth.users')
-      .select('*')
-      .eq('email', email)
-      .single();
-
-    if (existingUser) {
-      return res.status(400).json({ error: 'User already exists' });
-    }
-
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create user in Supabase Auth
-    const { data: userData, error: authError } = await supabase.auth.admin.createUser({
+    // Create user via Admin API with email auto-confirmed
+    const { data, error } = await supabase.auth.admin.createUser({
       email,
-      password: hashedPassword,
+      password,
       email_confirm: true,
       user_metadata: { full_name: name }
     });
 
-    if (authError) throw authError;
+    if (error) throw error;
 
-    // Return JWT token
+    // Generate JWT token
     const token = jwt.sign(
-      { userId: userData.user.id, email: userData.user.email },
+      { userId: data.user.id, email: data.user.email },
       process.env.JWT_SECRET,
       { expiresIn: '30d' }
     );
 
     res.json({
       message: 'User registered successfully',
-      user: { id: userData.user.id, email: userData.user.email, name },
+      user: { id: data.user.id, email: data.user.email, name: name },
       token
     });
   } catch (error) {
     console.error('Registration error:', error);
-    res.status(500).json({ error: 'Failed to register user' });
+    res.status(500).json({ error: error.message || 'Failed to register user' });
   }
 });
 
@@ -72,7 +59,7 @@ app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Verify credentials using Supabase
+    // Sign in with password
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password
@@ -89,7 +76,7 @@ app.post('/api/auth/login', async (req, res) => {
 
     res.json({
       message: 'Login successful',
-      user: { id: data.user.id, email: data.user.email },
+      user: { id: data.user.id, email: data.user.email, name: data.user.user_metadata?.full_name || 'User' },
       token
     });
   } catch (error) {
@@ -119,10 +106,12 @@ app.post('/api/auth/forgot-password', async (req, res) => {
 // Get current user profile
 app.get('/api/auth/me', authenticateToken, async (req, res) => {
   try {
-    const { data: { user }, error } = await supabase.auth.getUser(req.userId);
+    // Fetch user metadata from Supabase using admin API
+    const { data, error } = await supabase.auth.admin.getUserById(req.userId);
 
     if (error) throw error;
 
+    const user = data.user;
     res.json({
       id: user.id,
       email: user.email,
@@ -216,7 +205,7 @@ app.get('/api/products', async (req, res) => {
   try {
     // For now, serve from static data
     // Later, this can fetch from Supabase database
-    const products = require('../js/data.js').PRODUCTS;
+    const products = require(path.join(__dirname, '..', 'js', 'data.js')).PRODUCTS;
     res.json(products);
   } catch (error) {
     console.error('Get products error:', error);

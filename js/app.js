@@ -335,8 +335,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- User Menu Functions ---
   function checkUserAuth() {
+    const token = localStorage.getItem('bonkers_token');
     const user = apiAuth.getCurrentUser();
-    if (user && user.loggedIn) {
+    if (token && user && user.id) {
       showUserMenu(user);
     } else {
       hideUserMenu();

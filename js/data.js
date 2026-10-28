@@ -211,3 +211,7 @@ const BLOG_POSTS = [
     image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80'
   }
 ];
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { PRODUCTS, HERO_SLIDES, REVIEWS, BLOG_POSTS };
+}
