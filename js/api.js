@@ -18,7 +18,7 @@ async function apiRegister(email, password, name) {
 
     // Save token and user data
     localStorage.setItem('kaya_token', data.token);
-    localStorage.setItem('kaya_user', JSON.stringify(data.user));
+    localStorage.setItem('bonkers_user', JSON.stringify(data.user));
 
     return { success: true, user: data.user };
   } catch (error) {
@@ -41,7 +41,7 @@ async function apiLogin(email, password) {
 
     // Save token and user data
     localStorage.setItem('kaya_token', data.token);
-    localStorage.setItem('kaya_user', JSON.stringify(data.user));
+    localStorage.setItem('bonkers_user', JSON.stringify(data.user));
 
     return { success: true, user: data.user };
   } catch (error) {
@@ -82,7 +82,7 @@ async function apiGetUser() {
     if (!response.ok) {
       // Token expired or invalid
       localStorage.removeItem('kaya_token');
-      localStorage.removeItem('kaya_user');
+      localStorage.removeItem('bonkers_user');
       return null;
     }
 
@@ -95,7 +95,7 @@ async function apiGetUser() {
 
 async function apiLogout() {
   localStorage.removeItem('kaya_token');
-  localStorage.removeItem('kaya_user');
+  localStorage.removeItem('bonkers_user');
   window.location.href = 'index.html';
 }
 
@@ -182,7 +182,7 @@ function isAuthenticated() {
 }
 
 function getCurrentUser() {
-  return JSON.parse(localStorage.getItem('kaya_user') || 'null');
+  return JSON.parse(localStorage.getItem('bonkers_user') || 'null');
 }
 
 function getAuthToken() {
