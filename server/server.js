@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // Initialize Supabase client with Service Role Key (backend only)
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
+  process.env.SUPABASE_SECRET_KEYS ? JSON.parse(process.env.SUPABASE_SECRET_KEYS).default : process.env.SUPABASE_SERVICE_KEY
 );
 
 // Middleware
